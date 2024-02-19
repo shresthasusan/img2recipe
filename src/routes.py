@@ -120,8 +120,9 @@ def my_recipes():
         return redirect(url_for('login'))
 
     # Retrieve saved recipes for the current user
+    user_id = session['uid']
     cur = mysql.connection.cursor()
-    cur.execute("SELECT title, ingredients FROM recipes WHERE uid = 2")
+    cur.execute("SELECT title, ingredients FROM recipes WHERE uid = %s", (user_id,))
     saved_recipes = cur.fetchall()
     cur.close()
     print(saved_recipes)
@@ -141,11 +142,11 @@ def predictsample(samplefoodname):
 # Function to save recipe to database
 def save_recipe(user_id, recipe_title, recipe_ingredients, recipe_steps):
     user_id = session['uid']
-    recipe_title = request.form['recipe_title']
-    recipe_ingredients = request.form['recipe_ingredients']
-    recipe_steps = request.form['recipe_steps']
+    recipe_title = request.form['title']
+    recipe_ingredients = request.form['ingredients']
+    recipe_steps = request.form['recipe']
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO recipe (uid, title, ingredients, recipe) VALUES (%s, %s, %s, %s)",
+    cur.execute("INSERT INTO recipes (uid, title, ingredients, recipe) VALUES (%s, %s, %s, %s)",
               (user_id, recipe_title, recipe_ingredients, recipe_steps))
     mysql.connection.commit()
     cur.close()
@@ -154,11 +155,28 @@ def save_recipe(user_id, recipe_title, recipe_ingredients, recipe_steps):
 def save_recipe_to_db():
     if request.method == 'POST':
         user_id = session['uid']
-        recipe_title = request.form['recipe_title']
-        recipe_ingredients = request.form['recipe_ingredients']
-        recipe_steps = request.form['recipe_steps']
+        recipe_title = request.form['title']
+        recipe_ingredients = request.form['ingredients']
+        recipe_steps = request.form['recipe']
         
         save_recipe(user_id, recipe_title, recipe_ingredients, recipe_steps)
         return 'Recipe saved successfully!'
     else:
         return 'Invalid request method'
+
+
+@app.route('/view_recipe', methods=['GET'])
+def view_recipe_from_db():
+    if 'uid' not in session:
+        return redirect(url_for('login'))
+
+    # Retrieve saved recipes for the current user
+    user_id = session['uid']
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT title, ingredients FROM recipes WHERE uid = %s", (user_id,))
+    saved_recipes = cur.fetchall()
+    cur.close()
+    
+    # Render the saved recipes page
+    return render_template('view_recipes.html')
+    

@@ -14,9 +14,9 @@
             <tbody>
                 {% for recipe in saved_recipes %}
                 <tr>
-                    <td>{{ recipes.title }}</td>
-                    <td>{{ recipes.ingredients }}</td>
-                    <td><a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}">View Details</a></td>
+                    <td>{{ saved_recipes.title }}</td>
+                    <td>{{ saved_recipes.ingredients }}</td>
+                    <td><a href="{{ url_for('view_recipe', recipe_title=saved_recipes.title) }}">View Details</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
