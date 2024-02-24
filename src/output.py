@@ -89,7 +89,7 @@ def output(uploadedfile):
         recipe_ids = outputs['recipe_ids'].cpu().numpy()
                 
         outs, valid = prepare_output(recipe_ids[0], ingr_ids[0], ingrs_vocab, vocab)
-            
+        score=valid['score']
         if valid['is_valid'] or show_anyways:
                 
             title.append(outs['title'])
@@ -103,4 +103,4 @@ def output(uploadedfile):
             title.append("Not a valid recipe!")
             recipe.append("Reason: "+valid['reason'])
             
-    return title,ingredients,recipe
+    return title,ingredients,recipe,score
