@@ -10,7 +10,7 @@
                   {% if img %}
                   <img id="foodimage" onload="$(this).data('loaded', 'loaded');" src="{{ url_for('static',filename=img)}}" alt="">
                   {% else %}
-                  <img id="foodimage" onload="$(this).data('loaded', 'loaded');" src="" alt="">
+                  <img id="foodimage" onload="$(this).data('loaded', 'loaded');" src="{{ url_for('static',filename=img)}}" alt="">
                   
                   {% endif %}
                   
@@ -61,7 +61,7 @@
                                 <div class="card" style="width: 18rem;">
                                     <img src="{{ url_for('static',filename='images/chocolate-cake.jpg') }}" class="card-img-top" alt="..." >
                                     <div class="card-body">
-                                      <h5 class="card-title">Chocolate Cake</h5>
+                                      <h5 class="card-title">Chicken Kebab</h5>
                                       <a href="chocolate-cake" class="btn btn-primary" onclick="select('chocolate-cake.jpg')" >Select</a>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                 <div class="card" style="width: 18rem;">
                                     <img src="{{ url_for('static',filename='images/grilled-beef.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                      <h5 class="card-title">Grilled Beef</h5>
+                                      <h5 class="card-title">Tacos</h5>
                                       <a href="grilled-beef" class="btn btn-primary" onclick="select('grilled-beef.jpg')">Select</a>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                 <div class="card" style="width: 18rem;">
                                     <img src="{{ url_for('static',filename='images/1.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                      <h5 class="card-title">1</h5>
+                                      <h5 class="card-title">Ramen</h5>
                                       <a href="1" class="btn btn-primary" onclick="select('1.jpg')">Select</a>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                 <div class="card" style="width: 18rem;">
                                     <img src="{{ url_for('static',filename='images/2.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                      <h5 class="card-title">2</h5>
+                                      <h5 class="card-title">noodle</h5>
                                       <a href="2" class="btn btn-primary" onclick="select('2.jpg')">Select</a>
                                     </div>
                                 </div>
@@ -97,17 +97,17 @@
                                 <div class="card" style="width: 18rem;">
                                     <img src="{{ url_for('static',filename='images/3.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                      <h5 class="card-title">3</h5>
+                                      <h5 class="card-title">Chatamari</h5>
                                       <a href="3" class="btn btn-primary" onclick="select('3.jpg')">Select</a>
                                     </div>
                                 </div>
                               </div>
                               <div class="col">
                                 <div class="card" style="width: 18rem;">
-                                    <img src="{{ url_for('static',filename='images/5.jpg') }}" class="card-img-top" alt="...">
+                                    <img src="{{ url_for('static',filename='images/Hyderabadi-chicken-Biryani.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                      <h5 class="card-title">5</h5>
-                                      <a href="5" class="btn btn-primary" onclick="select('5.jpg')">Select</a>
+                                      <h5 class="card-title">biryani </h5>
+                                      <a href="5" class="btn btn-primary" onclick="select('Hyderabadi-chicken-Biryani.jpg')">Select</a>
                                     </div>
                                 </div>
                               </div>

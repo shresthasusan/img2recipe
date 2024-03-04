@@ -108,91 +108,9 @@ def predict():
     imagefile.save(image_path)
 
     img = "/demo_imgs/" + filename
-    title, ingredients, recipe = output(image_path)
+    title, ingredients, recipe,score = output(image_path)
 
-    return render_template('predict.html', title=title, ingredients=ingredients, recipe=recipe, img=img)
-
-
-
-@app.route('/my_recipes',methods=['GET'])
-def my_recipes():
-#     if 'uid' not in session:
-#         return redirect(url_for('login'))
-
-#     # Retrieve saved recipes for the current user
-#     user_id = session['uid']
-#     cur = mysql.connection.cursor()
-#     cur.execute("SELECT title, ingredients FROM recipes WHERE uid = %s", (user_id,))
-#     saved_recipes = cur.fetchall()
-   
-#     print(saved_recipes)
-#     cur.close()
-#     # Render the saved recipes page
-#     return render_template('my_recipes.html', saved_recipes=saved_recipes)
-#     # return render_template('my_recipes.html')
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT  * FROM students")
-    data = cur.fetchall()
-    cur.close()
-    print(data)
-
-
-
-    return render_template('my_recipes.html', students=data )
-
-
-@app.route('/insert', methods = ['POST'])
-def insert():
-
-    if request.method == "POST":
-        flash("Data Inserted Successfully")
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO students (name, email, phone) VALUES (%s, %s, %s)", (name, email, phone))
-        mysql.connection.commit()
-        return redirect(url_for('Index'))
-
-
-
-
-@app.route('/delete/<string:id_data>', methods = ['GET'])
-def delete(id_data):
-    flash("Record Has Been Deleted Successfully")
-    cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM students WHERE id=%s", (id_data,))
-    mysql.connection.commit()
-    return redirect(url_for('Index'))
-
-
-
-
-
-@app.route('/update',methods=['POST','GET'])
-def update():
-
-    if request.method == 'POST':
-        id_data = request.form['id']
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-        cur = mysql.connection.cursor()
-        cur.execute("""
-               UPDATE students
-               SET name=%s, email=%s, phone=%s
-               WHERE id=%s
-            """, (name, email, phone, id_data))
-        flash("Data Updated Successfully")
-        mysql.connection.commit()
-        return redirect(url_for('Index'))
-
-
-
-
-
-
-
+    return render_template('predict.html', title=title, ingredients=ingredients,img=img,recipe=recipe,score=score)
 
 
 
@@ -203,44 +121,3 @@ def predictsample(samplefoodname):
     title,ingredients,recipe,score = output(imagefile)
     return render_template('predict.html',title=title,ingredients=ingredients,recipe=recipe,img=img,score=score)
 
-# Function to save recipe to database
-def save_recipe(user_id, recipe_title, recipe_ingredients, recipe_steps):
-    user_id = session['uid']
-    recipe_title = request.form['title']
-    recipe_ingredients = request.form['ingredients']
-    recipe_steps = request.form['recipe']
-    cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO recipes (uid, title, ingredients, recipe) VALUES (%s, %s, %s, %s)",
-              (user_id, recipe_title, recipe_ingredients, recipe_steps))
-    mysql.connection.commit()
-    cur.close()
-
-@app.route('/save_recipe', methods=['POST'])
-def save_recipe_to_db():
-    if request.method == 'POST':
-        user_id = session['uid']
-        recipe_title = request.form['title']
-        recipe_ingredients = request.form['ingredients']
-        recipe_steps = request.form['recipe']
-        
-        save_recipe(user_id, recipe_title, recipe_ingredients, recipe_steps)
-        return 'Recipe saved successfully!'
-    else:
-        return 'Invalid request method'
-
-
-@app.route('/view_recipe', methods=['GET'])
-def view_recipe_from_db():
-    if 'uid' not in session:
-        return redirect(url_for('login'))
-
-    # Retrieve saved recipes for the current user
-    user_id = session['uid']
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT title, ingredients FROM recipes WHERE uid = %s", (user_id,))
-    saved_recipes = cur.fetchall()
-    cur.close()
-    
-    # Render the saved recipes page
-    return render_template('view_recipes.html')
-    
