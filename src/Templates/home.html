@@ -1,11 +1,7 @@
 {% extends "layout.html" %}
 {% block home %}
 
-{% if flash_message %}
-<div class="flash-message">
-  {{ flash_message }}
-</div>
-{% endif %}
+
             <div id="info" class="col-md-8">
                 <div class="card m-3">
                     <img src="{{ url_for('static',filename='images/cover1.jpg')}}" class="card-img-top" alt="..." >

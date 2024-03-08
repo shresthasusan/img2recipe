@@ -1,0 +1,60 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="row" style="padding: 5%;">
+    <div class="col-md-4">
+        <div class="wrapper">
+        <div class="image">
+            {% if img %}
+            <img id="foodimage" onload="$(this).data('loaded', 'loaded');" src="{{ url_for('static',filename=img)}}" alt="">
+            {% else %}
+            <img id="foodimage" onload="$(this).data('loaded', 'loaded');" src="{{ url_for('static',filename=img)}}" alt="">
+            
+            {% endif %}
+            
+
+        </div>
+        </div></div>
+<div id="info" style="margin: auto;" class="col-md-8">
+    <div class="card text-center pb-2">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="tabbtn1" href="#" onclick="javascript:myFunctab1()">Recipe 1</a>
+                </li>
+            </ul>
+        </div>
+        <div id="tab1">
+            <div class="card-body" align="left" id="result">
+                <h5 class="card-title" align="center">Penne alla pizzaiola</h5>
+                <br>
+                <h6>Ingredients :</h6>
+                <p class="card-text">oil, pepper, onion, clove, tomato, cheese, basil, salt, pasta, wine, parsley</p>
+                <br>
+                <h6>Recipe :</h6>
+                <ol class="pl-3">
+                    <li class="card-text">Heat olive oil in a large dutch oven over medium-high heat.</li>
+                    <li class="card-text">Cook and stir onion and garlic in hot oil until onion is soft and golden, 5 to 10 minutes.</li>
+                    <li class="card-text">Stir tomatoes, tomato paste, wine, parsley, salt, and pepper into onion mixture.</li>
+                    <li class="card-text">Bring to a simmer.</li>
+                    <li class="card-text">Stir tomatoes and basil into onion mixture.</li>
+                    <li class="card-text">Bring pasta to a boil.</li>
+                    <li class="card-text">Reduce heat to medium; simmer covered, until pasta is tender yet firm to the bite, stirring occasionally, about 11 minutes.</li>
+                    <li class="card-text">Stir cooked penne into tomato mixture and cook 5 minutes.</li>
+                </ol>
+                <br>
+                
+            </div>
+        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>    
+</div">
+{% endblock content %}

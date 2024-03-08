@@ -17,33 +17,46 @@
     
      <title>RecipeLens</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/Group_11.png') }}" sizes="32x32">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
     
     <!-- Navigation Bar -->
     <div id="Section-1">
-        <nav class="navbar navbar-expand-lg navbar-light bg-grey">
+        <nav class="navbar navbar-expand-lg navbar-light bg-grey" >
             <a class="navbar-brand mr-auto" href="{{url_for('home')}}" style="font-family: 'Times New Roman', Times, serif;">
                 <img src="{{ url_for('static',filename='images/kalologo.svg') }}" width="100" height="100" class="d-inline-block align-top" alt="" style="margin-top: -30.5px;">
                 </a>
-            <a href="{{url_for('home')}}" class="w-100 text-center text-dark">IMAGE TO RECIPE GENERATOR</a>
+            <a href="{{url_for('home')}}" style="transform: translateX(90px);" class="w-100 text-center text-dark">IMAGE TO RECIPE GENERATOR</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <div class="collapse navbar-collapse " style="width: 20%;" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                 <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('my_recipes')}}">My recipes</a>
+                    </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="{{url_for('logout')}}">signout</a>
                     </li>
+                   
             </ul>
             </div>
         </nav>
     </div>
     
-  
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    
+        <div class="alert alert-info">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
 
 
 

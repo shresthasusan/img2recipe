@@ -1,12 +1,4 @@
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 
-# Code adapted from https://github.com/pytorch/fairseq
-# Copyright (c) 2017-present, Facebook, Inc.
-# All rights reserved.
-#
-# This source code is licensed under the license found in the LICENSE file in
-# https://github.com/pytorch/fairseq. An additional grant of patent rights
-# can be found in the PATENTS file in the same directory.
 
 import math
 import torch

@@ -1,4 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 
 from torchvision.models import resnet18, resnet50, resnet101, resnet152, vgg16, vgg19, inception_v3
 import torch
