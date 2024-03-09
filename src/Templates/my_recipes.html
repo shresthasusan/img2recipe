@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <!-- <tr>
       <td>Penne alla pizzaiola</td>
       <td>
         oil, pepper, onion, clove, tomato, cheese, basil, salt, pasta, wine,
@@ -22,17 +22,9 @@
         </a>
       </td>
     </tr>
-    <tr>
-      <td>Creamy pasta primavera</td>
-      <td>cheese, peas, pepper, pasta, milk, carrot, butter, flour</td>
-      <td>
-        <a class="btn btn-success" href="{{ url_for('view_recipe', samplefood='0') }}">
-          View Recipe
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>Shrimp fried rice</td>
+   
+    <tr> -->
+      <!-- <td>Shrimp fried rice</td>
       <td>
         oil, onion, rice, salt, shrimp, pepper, chicken, clove, soy_sauce, water
       </td>
@@ -68,6 +60,15 @@
           View Recipe
         </a>
       </td>
+    </tr> -->
+    <tr>
+      <td>Creamy pasta primavera</td>
+      <td>cheese, peas, pepper, pasta, milk, carrot, butter, flour</td>
+      <td>
+        <a class="btn btn-success" href="{{ url_for('view_recipe', samplefood='0') }}">
+          View Recipe
+        </a>
+      </td>
     </tr>
     <tr>
       <td>Grilled chicken kebabs</td>
@@ -76,20 +77,13 @@
         paprika
       </td>
       <td>
-        <a class="btn btn-success" href="{{ url_for('view_recipe', samplefood='chocolate-cake') }}">
+        <a class="btn btn-success" href="{{ url_for('kabab_recipe', samplefood='chocolate-cake') }}">
           View Recipe
         </a>
       </td>
     </tr>
-    <tr>
-      <td>Quick & easy taco pizza</td>
-      <td>onion, cheese, tortilla, tomato, pepper, lettuce, salsa, chili</td>
-      <td>
-        <a class="btn btn-success" href="{{ url_for('view_recipe', samplefood='tacos') }}" >
-          View Recipe
-        </a>
-      </td>
-    </tr>
+   
+
     <!-- Add more rows for other recipes -->
   </tbody>
 </table>

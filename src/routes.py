@@ -157,3 +157,11 @@ def view_recipe(samplefood):
     else:
         img="/images/"+str(samplefood)+".jpg"
         return render_template('view_recipe.html',img=img)
+
+@app.route('/recipe/<samplefood>')
+def kabab_recipe(samplefood):
+    if 'uid' not in session:
+        return redirect(url_for('login'))  # Redirect to login page if user is not logged in
+    else:
+        img="/images/"+str(samplefood)+".jpg"
+        return render_template('my_recipe_kabab.html',img=img)
